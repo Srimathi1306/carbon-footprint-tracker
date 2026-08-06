@@ -1,0 +1,47 @@
+.recommendation-grid {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
+  gap: 20px;
+}
+
+.recommendation-card {
+  background: #fff;
+
+  padding: 20px;
+
+  border-radius: 12px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  transition: 0.3s;
+}
+
+.recommendation-card:hover {
+  transform: translateY(-5px);
+}
+
+.recommendation-card h3 {
+  color: #16a34a;
+
+  margin-bottom: 15px;
+}
+
+.saving-box {
+  margin-top: 20px;
+  background: #dcfce7;
+  padding: 18px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.saving-box h3 {
+  color: #166534;
+  margin-bottom: 10px;
+}
+
+.saving-box p {
+  color: #166534;
+  line-height: 1.5;
+}

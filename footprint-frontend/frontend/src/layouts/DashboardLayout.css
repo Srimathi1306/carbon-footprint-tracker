@@ -1,0 +1,14 @@
+.dashboard-container {
+  display: flex;
+  background: #f5f7fb;
+  min-height: 100vh;
+}
+
+.dashboard-content {
+  margin-left: 260px;
+  width: calc(100% - 260px);
+}
+
+.page-content {
+  padding: 30px;
+}

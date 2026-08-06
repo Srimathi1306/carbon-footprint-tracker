@@ -1,0 +1,110 @@
+.profile-container {
+  display: flex;
+  gap: 30px;
+  margin-top: 25px;
+  align-items: flex-start;
+}
+
+.profile-summary-card {
+  flex: 1;
+  background: #fff;
+  border-radius: 18px;
+  padding: 35px 25px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: #16a34a;
+  color: white;
+  font-size: 48px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-summary-card h2 {
+  margin: 10px 0;
+}
+
+.role-badge {
+  display: inline-block;
+  margin-top: 10px;
+  background: #16a34a;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.profile-info-card {
+  flex: 2;
+  background: #fff;
+  border-radius: 18px;
+  padding: 35px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.profile-info-card h2 {
+  margin-bottom: 25px;
+}
+
+.info-item {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  padding: 18px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.info-icon {
+  color: #16a34a;
+  font-size: 20px;
+  margin-top: 3px;
+}
+
+.info-item label {
+  font-size: 13px;
+  color: gray;
+}
+
+.info-item p {
+  margin-top: 5px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.edit-profile-btn {
+  margin-top: 30px;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 10px;
+  background: #16a34a;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.edit-profile-btn:hover {
+  background: #15803d;
+}
+
+@media (max-width: 900px) {
+  .profile-container {
+    flex-direction: column;
+  }
+
+  .profile-summary-card,
+  .profile-info-card {
+    width: 100%;
+  }
+}

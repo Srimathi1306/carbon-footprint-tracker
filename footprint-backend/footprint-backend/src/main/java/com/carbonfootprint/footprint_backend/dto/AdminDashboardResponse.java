@@ -1,0 +1,22 @@
+package com.carbonfootprint.footprint_backend.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class AdminDashboardResponse {
+
+    private Long totalUsers;
+
+    private Long totalActivities;
+
+    private Double totalCarbon;
+
+    private Double averageCarbonPerUser;
+
+}

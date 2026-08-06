@@ -1,0 +1,19 @@
+.dashboard-card {
+  margin-top: 20px;
+}
+
+.dashboard-card h3 {
+  margin-bottom: 15px;
+}
+
+.recharts-wrapper {
+  margin: auto;
+}
+
+.history-summary {
+  margin-bottom: 20px;
+}
+
+.history-table-card {
+  margin-top: 25px;
+}
