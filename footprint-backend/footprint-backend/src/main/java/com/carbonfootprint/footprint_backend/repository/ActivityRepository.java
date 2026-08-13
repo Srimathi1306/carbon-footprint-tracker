@@ -150,5 +150,21 @@ WHERE a.user.id = :userId
     );
 
 
+    @Query("""
+SELECT COUNT(a)
+FROM Activity a
+WHERE a.user.organization.id = :organizationId
+""")
+    Long countByOrganizationId(
+            @Param("organizationId") Long organizationId
+    );
 
+    @Query("""
+SELECT COALESCE(SUM(a.carbonEmission), 0)
+FROM Activity a
+WHERE a.user.organization.id = :organizationId
+""")
+    Double getTotalCarbonEmissionByOrganizationId(
+            @Param("organizationId") Long organizationId
+    );
 }

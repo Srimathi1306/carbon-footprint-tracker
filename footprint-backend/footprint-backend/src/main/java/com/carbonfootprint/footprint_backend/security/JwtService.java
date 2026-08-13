@@ -20,12 +20,25 @@ public class JwtService {
     private final Key key = Keys.hmacShaKeyFor(SECRET.getBytes());
 
     // Generate Token
-    public String generateToken(String email) {
+//    public String generateToken(String email) {
+//
+//        return Jwts.builder()
+//                .setSubject(email)
+//                .setIssuedAt(new Date())
+//                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60))
+//                .signWith(key, SignatureAlgorithm.HS256)
+//                .compact();
+//    }
+
+    public String generateToken(String email, String accountType) {
 
         return Jwts.builder()
                 .setSubject(email)
+                .claim("accountType", accountType)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60))
+                .setExpiration(
+                        new Date(System.currentTimeMillis() + 1000 * 60 * 60)
+                )
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
@@ -34,6 +47,14 @@ public class JwtService {
     public String extractEmail(String token) {
 
         return extractClaim(token, Claims::getSubject);
+    }
+
+    public String extractAccountType(String token) {
+
+        return extractClaim(
+                token,
+                claims -> claims.get("accountType", String.class)
+        );
     }
 
     // Extract Expiration Date

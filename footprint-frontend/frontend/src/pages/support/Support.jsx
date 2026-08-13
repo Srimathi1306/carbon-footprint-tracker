@@ -23,7 +23,7 @@ function Support() {
   };
 
   return (
-    <DashboardLayout>
+    <DashboardLayout role="USER">
       <div className="support-container">
         <div className="support-header">
           <h2>Support Center</h2>

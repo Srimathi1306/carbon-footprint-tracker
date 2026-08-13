@@ -44,7 +44,7 @@ function AdminTicketDetails() {
   };
 
   if (!ticket) {
-    return <DashboardLayout>Loading...</DashboardLayout>;
+    return <DashboardLayout role="ADMIN">Loading...</DashboardLayout>;
   }
 
   return (

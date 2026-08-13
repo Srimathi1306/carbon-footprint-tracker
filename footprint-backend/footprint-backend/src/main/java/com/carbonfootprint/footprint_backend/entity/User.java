@@ -21,11 +21,11 @@ public class User extends BaseEntity{
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false, unique = true)
+    @Column(length = 191,nullable = false, unique = true)
     private String username;
 
 
-    @Column(nullable = false, unique = true)
+    @Column(length = 191,nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)
@@ -34,6 +34,12 @@ public class User extends BaseEntity{
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "organization_id")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Organization organization;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     @ToString.Exclude

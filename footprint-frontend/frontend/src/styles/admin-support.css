@@ -1,0 +1,508 @@
+/* ================================
+   ADMIN SUPPORT PAGE
+================================ */
+
+.support-page {
+  display: flex;
+  gap: 24px;
+  height: calc(100vh - 140px);
+  min-height: 500px;
+}
+
+/* ================================
+   TICKET LIST
+================================ */
+
+.support-sidebar {
+  width: 360px;
+  min-width: 360px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+
+  display: flex;
+  flex-direction: column;
+
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.support-sidebar h2 {
+  margin: 0 0 20px;
+  font-size: 22px;
+  color: #111827;
+}
+
+/* ================================
+   ADMIN TICKET CARD
+================================ */
+
+.support-sidebar .ticket-card {
+  display: block;
+
+  text-decoration: none;
+  color: inherit;
+
+  background: #f9fafb;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  padding: 16px;
+  margin-bottom: 12px;
+
+  transition: all 0.2s ease;
+}
+
+.support-sidebar .ticket-card:hover {
+  background: #f0fdf4;
+  border-color: #16a34a;
+  transform: translateY(-1px);
+}
+
+.support-sidebar .ticket-card:last-child {
+  margin-bottom: 0;
+}
+
+.support-sidebar .ticket-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.support-sidebar .ticket-top h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #111827;
+  line-height: 1.4;
+}
+
+.support-sidebar .ticket-card p {
+  margin: 10px 0 0;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.support-sidebar .ticket-card small {
+  display: block;
+  margin-top: 12px;
+  color: #6b7280;
+  font-size: 12px;
+}
+
+/* ================================
+   STATUS BADGE
+================================ */
+
+.support-sidebar .status {
+  display: inline-block;
+
+  padding: 5px 10px;
+
+  border-radius: 20px;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.support-sidebar .status.open {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.support-sidebar .status.in_progress {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.support-sidebar .status.closed {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+/* ================================
+   CHAT AREA
+================================ */
+
+.support-chat {
+  flex: 1;
+  min-width: 0;
+
+  background: #ffffff;
+
+  border-radius: 16px;
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+}
+
+/* ================================
+   CHAT HEADER
+================================ */
+
+.support-chat .chat-header {
+  padding: 22px 24px;
+
+  border-bottom: 1px solid #e5e7eb;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  gap: 20px;
+
+  flex-shrink: 0;
+}
+
+.support-chat .chat-header h2 {
+  margin: 0;
+  font-size: 22px;
+  color: #111827;
+}
+
+.support-chat .chat-header p {
+  margin: 7px 0 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* ================================
+   STATUS UPDATE
+================================ */
+
+.support-chat .chat-header select {
+  min-width: 170px;
+
+  padding: 10px 12px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+
+  background: white;
+
+  font-size: 14px;
+
+  outline: none;
+}
+
+.support-chat .chat-header select:focus {
+  border-color: #16a34a;
+}
+
+.support-chat .chat-header button {
+  margin-left: 8px;
+
+  padding: 10px 16px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #16a34a;
+  color: white;
+
+  cursor: pointer;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.support-chat .chat-header button:hover {
+  background: #15803d;
+}
+
+/* ================================
+   MESSAGES
+================================ */
+
+.support-chat .chat-messages {
+  flex: 1;
+
+  padding: 24px;
+
+  overflow-y: auto;
+
+  background: #f8fafc;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 14px;
+}
+
+/* ================================
+   USER MESSAGE
+================================ */
+
+.support-chat .user-message {
+  align-self: flex-start;
+
+  max-width: 70%;
+
+  background: white;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 12px;
+
+  padding: 12px 16px;
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.support-chat .user-message strong {
+  display: block;
+
+  color: #2563eb;
+
+  margin-bottom: 5px;
+
+  font-size: 13px;
+}
+
+.support-chat .user-message p {
+  margin: 0;
+
+  color: #374151;
+
+  line-height: 1.5;
+}
+
+.support-chat .user-message small {
+  display: block;
+
+  margin-top: 8px;
+
+  color: #9ca3af;
+
+  font-size: 11px;
+}
+
+/* ================================
+   ADMIN MESSAGE
+================================ */
+
+.support-chat .admin-message {
+  align-self: flex-end;
+
+  max-width: 70%;
+
+  background: #dcfce7;
+
+  border-radius: 12px;
+
+  padding: 12px 16px;
+}
+
+.support-chat .admin-message strong {
+  display: block;
+
+  color: #15803d;
+
+  margin-bottom: 5px;
+
+  font-size: 13px;
+}
+
+.support-chat .admin-message p {
+  margin: 0;
+
+  color: #374151;
+
+  line-height: 1.5;
+}
+
+.support-chat .admin-message small {
+  display: block;
+
+  margin-top: 8px;
+
+  color: #6b7280;
+
+  font-size: 11px;
+}
+
+/* ================================
+   REPLY BOX
+================================ */
+
+.support-chat .reply-box {
+  padding: 16px 20px;
+
+  border-top: 1px solid #e5e7eb;
+
+  display: flex;
+
+  gap: 12px;
+
+  background: white;
+
+  flex-shrink: 0;
+}
+
+.support-chat .reply-box textarea {
+  flex: 1;
+
+  min-height: 48px;
+  max-height: 120px;
+
+  resize: vertical;
+
+  padding: 12px;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 10px;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  outline: none;
+
+  box-sizing: border-box;
+}
+
+.support-chat .reply-box textarea:focus {
+  border-color: #16a34a;
+}
+
+.support-chat .reply-box button {
+  align-self: flex-end;
+
+  padding: 11px 18px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background: #16a34a;
+
+  color: white;
+
+  cursor: pointer;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.support-chat .reply-box button:hover {
+  background: #15803d;
+}
+
+/* ================================
+   EMPTY STATES
+================================ */
+
+.empty-chat {
+  flex: 1;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #6b7280;
+
+  font-size: 16px;
+}
+
+.support-sidebar .empty-ticket {
+  padding: 30px 10px;
+
+  text-align: center;
+
+  color: #6b7280;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 1000px) {
+  .support-page {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .support-sidebar {
+    width: 100%;
+    min-width: 0;
+    max-height: 350px;
+  }
+
+  .support-chat {
+    min-height: 600px;
+  }
+}
+
+@media (max-width: 700px) {
+  .support-chat .chat-header {
+    flex-direction: column;
+  }
+
+  .support-chat .chat-header > div:last-child {
+    width: 100%;
+  }
+
+  .support-chat .chat-header select {
+    width: 100%;
+  }
+
+  .support-chat .chat-header button {
+    margin-left: 0;
+    margin-top: 8px;
+  }
+
+  .support-chat .reply-box {
+    flex-direction: column;
+  }
+
+  .support-chat .reply-box button {
+    align-self: stretch;
+  }
+
+  .support-chat .user-message,
+  .support-chat .admin-message {
+    max-width: 90%;
+  }
+}
+
+.support-chat .chat-header button {
+  margin-left: 10px;
+  margin-top: 8px;
+
+  padding: 10px 20px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #16a34a;
+  color: white;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.support-chat .chat-header button:hover {
+  background: #15803d;
+  transform: translateY(-1px);
+}
+
+.support-chat .chat-header button:active {
+  transform: translateY(0);
+}

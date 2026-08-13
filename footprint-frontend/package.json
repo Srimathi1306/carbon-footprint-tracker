@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "i18next": "^26.3.6",
-    "react-google-translate": "^1.0.12",
-    "react-i18next": "^17.0.11"
-  }
-}

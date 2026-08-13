@@ -49,33 +49,11 @@ function Home() {
         </div>
 
         <div className="hero-right">
-          <div className="hero-card">
-            <h3>🌱 Today's Footprint</h3>
-
-            <h1>3.42 kg</h1>
-
-            <p>↓ 18% lower than yesterday</p>
-
-            <div className="mini-progress">
-              <div className="mini-progress-fill"></div>
-            </div>
-
-            <br />
-
-            <div className="hero-stats">
-              <div>
-                <h4>Level</h4>
-
-                <span>Eco Warrior</span>
-              </div>
-
-              <div>
-                <h4>XP</h4>
-
-                <span>1850</span>
-              </div>
-            </div>
-          </div>
+          <img
+            src="/carbon-hero.png"
+            alt="Sustainable future with renewable energy and nature"
+            className="hero-image"
+          />
         </div>
       </section>
 
@@ -157,7 +135,7 @@ function Home() {
 
       {/* Leaderboard Preview */}
 
-      <section className="leaderboard-preview">
+      {/* <section className="leaderboard-preview">
         <h2>Community Leaderboard</h2>
 
         <p>
@@ -190,7 +168,7 @@ function Home() {
             <span>1850 XP</span>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Features */}
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import Select from "react-select";
 
 const languages = [
   { code: "en", name: "English" },
@@ -33,17 +33,21 @@ const languages = [
 ];
 
 export default function LanguageSelector() {
-  const [selected, setSelected] = useState("English");
+  const options = languages.map((lang) => ({
+    value: lang.code,
+    label: lang.name,
+  }));
 
-  const changeLanguage = (lang) => {
-    setSelected(lang.name);
+  const changeLanguage = (selectedOption) => {
+    if (!selectedOption) return;
 
     const tryChange = () => {
       const select = document.querySelector(".goog-te-combo");
 
       if (select) {
-        select.value = lang.code;
-        select.dispatchEvent(new Event("change"));
+        select.value = selectedOption.value;
+
+        select.dispatchEvent(new Event("change", { bubbles: true }));
       } else {
         setTimeout(tryChange, 500);
       }
@@ -53,25 +57,19 @@ export default function LanguageSelector() {
   };
 
   return (
-    <select
-      value={selected}
-      onChange={(e) => {
-        const lang = languages.find((l) => l.name === e.target.value);
-        if (lang) changeLanguage(lang);
-      }}
-      style={{
-        padding: "8px 12px",
-        borderRadius: "8px",
-        border: "1px solid #d1d5db",
-        cursor: "pointer",
-        fontSize: "14px",
-      }}
-    >
-      {languages.map((lang) => (
-        <option key={lang.code} value={lang.name}>
-          {lang.name}
-        </option>
-      ))}
-    </select>
+    <div className="notranslate">
+      <Select
+        options={options}
+        onChange={changeLanguage}
+        placeholder="Search language..."
+        isSearchable
+        styles={{
+          container: (base) => ({
+            ...base,
+            width: "220px",
+          }),
+        }}
+      />
+    </div>
   );
 }

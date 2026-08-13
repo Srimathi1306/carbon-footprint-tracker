@@ -50,7 +50,7 @@ function TicketDetails() {
   }
 
   return (
-    <DashboardLayout>
+    <DashboardLayout role="USER">
       <div className="chat-container">
         <div className="chat-header">
           <h2>{ticket.subject}</h2>

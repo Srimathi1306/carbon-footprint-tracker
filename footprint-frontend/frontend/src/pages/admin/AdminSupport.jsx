@@ -6,7 +6,7 @@ import {
   adminReply,
   updateTicketStatus,
 } from "../../services/adminSupportService";
-import "../../styles/support.css";
+import "../../styles/admin-support.css";
 
 function AdminSupport() {
   const [tickets, setTickets] = useState([]);

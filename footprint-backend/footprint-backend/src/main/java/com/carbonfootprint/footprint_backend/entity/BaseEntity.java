@@ -11,6 +11,21 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
+//@Getter
+//@Setter
+//@MappedSuperclass
+//@EntityListeners(AuditingEntityListener.class)
+//public abstract class BaseEntity {
+//
+//    @CreatedDate
+//    @Column(nullable = false, updatable = false)
+//    private LocalDateTime createdAt;
+//
+//    @LastModifiedDate
+//    @Column(nullable = false)
+//    private LocalDateTime updatedAt;
+//}
+
 @Getter
 @Setter
 @MappedSuperclass
@@ -18,10 +33,17 @@ import java.time.LocalDateTime;
 public abstract class BaseEntity {
 
     @CreatedDate
-    @Column(nullable = false, updatable = false)
+    @Column(
+            nullable = false,
+            updatable = false,
+            columnDefinition = "DATETIME"
+    )
     private LocalDateTime createdAt;
 
     @LastModifiedDate
-    @Column(nullable = false)
+    @Column(
+            nullable = false,
+            columnDefinition = "DATETIME"
+    )
     private LocalDateTime updatedAt;
 }

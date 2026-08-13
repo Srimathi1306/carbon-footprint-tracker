@@ -144,6 +144,36 @@ function Sidebar({ role }) {
             </NavLink>
           </>
         )}
+
+        {/* ================= ORGANIZATION ================= */}
+        {role === "ORGANIZATION" && (
+          <>
+            <NavLink to="/organization/dashboard" className="nav-item">
+              <FaBuilding />
+              <span>Organization Dashboard</span>
+            </NavLink>
+
+            <NavLink to="/organization/users" className="nav-item">
+              <FaUsersCog />
+              <span>Users</span>
+            </NavLink>
+
+            <NavLink to="/organization/activities" className="nav-item">
+              <FaClipboardList />
+              <span>Activities</span>
+            </NavLink>
+
+            <NavLink to="/organization/support" className="nav-item">
+              <FaHeadset />
+              <span>Support</span>
+            </NavLink>
+
+            <NavLink to="/organization/profile" className="nav-item">
+              <FaUser />
+              <span>Profile</span>
+            </NavLink>
+          </>
+        )}
       </nav>
 
       <button className="logout-btn" onClick={handleLogout}>
