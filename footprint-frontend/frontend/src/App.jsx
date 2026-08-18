@@ -35,6 +35,16 @@ import ActivityHistory from "./pages/user/ActivityHistory";
 
 import AdminUsers from "./pages/admin/Users";
 
+import OrganizationLogin from "./pages/auth/OrganizationLogin";
+import OrganizationRegister from "./pages/auth/OrganizationRegister";
+
+import OrganizationDashboard from "./pages/organization/OrganizationDashboard.jsx";
+import OrganizationProtectedRoute from "./components/organization/OrganizationProtectedRoute";
+import OrganizationUsers from "./pages/organization/OrganizationUsers.jsx";
+import OrganizationProfile from "./pages/organization/OrganizationProfile";
+import OrganizationActivities from "./pages/organization/OrganizationActivities";
+import OrganizationAnalytics from "./pages/organization/OrganizationAnalytics";
+
 function App() {
   return (
     <Routes>
@@ -230,6 +240,55 @@ function App() {
           <ProtectedRoute>
             <Profile />
           </ProtectedRoute>
+        }
+      />
+
+      <Route path="/organization/login" element={<OrganizationLogin />} />
+
+      <Route path="/organization/register" element={<OrganizationRegister />} />
+
+      <Route
+        path="/organization/dashboard"
+        element={
+          <OrganizationProtectedRoute>
+            <OrganizationDashboard />
+          </OrganizationProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/organization/users"
+        element={
+          <OrganizationProtectedRoute>
+            <OrganizationUsers />
+          </OrganizationProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/organization/profile"
+        element={
+          <OrganizationProtectedRoute>
+            <OrganizationProfile />
+          </OrganizationProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/organization/activities"
+        element={
+          <OrganizationProtectedRoute>
+            <OrganizationActivities />
+          </OrganizationProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/organization/analytics"
+        element={
+          <OrganizationProtectedRoute>
+            <OrganizationAnalytics />
+          </OrganizationProtectedRoute>
         }
       />
     </Routes>

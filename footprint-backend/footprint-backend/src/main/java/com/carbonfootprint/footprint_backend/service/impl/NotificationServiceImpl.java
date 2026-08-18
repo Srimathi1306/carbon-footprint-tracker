@@ -3,8 +3,10 @@ package com.carbonfootprint.footprint_backend.service.impl;
 import com.carbonfootprint.footprint_backend.dto.NotificationResponse;
 import com.carbonfootprint.footprint_backend.entity.Notification;
 import com.carbonfootprint.footprint_backend.entity.NotificationType;
+import com.carbonfootprint.footprint_backend.entity.Organization;
 import com.carbonfootprint.footprint_backend.entity.User;
 import com.carbonfootprint.footprint_backend.repository.NotificationRepository;
+import com.carbonfootprint.footprint_backend.repository.OrganizationRepository;
 import com.carbonfootprint.footprint_backend.repository.UserRepository;
 import com.carbonfootprint.footprint_backend.service.NotificationService;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +21,7 @@ public class NotificationServiceImpl implements NotificationService {
 
     private final NotificationRepository notificationRepository;
     private final UserRepository userRepository;
+    private final OrganizationRepository organizationRepository;
 
     @Override
     public void createNotification(User user,
@@ -66,6 +69,60 @@ public class NotificationServiceImpl implements NotificationService {
         Notification notification =
                 notificationRepository.findById(notificationId)
                         .orElseThrow(() -> new RuntimeException("Notification not found"));
+
+        notification.setIsRead(true);
+
+        notificationRepository.save(notification);
+    }
+
+    @Override
+    public List<NotificationResponse> getOrganizationNotifications(
+            String organizationEmail) {
+
+        Organization organization =
+                organizationRepository.findByEmail(organizationEmail)
+                        .orElseThrow(() ->
+                                new RuntimeException("Organization not found"));
+
+        return notificationRepository
+                .findByOrganizationOrderByCreatedAtDesc(organization)
+                .stream()
+                .map(notification -> NotificationResponse.builder()
+                        .id(notification.getId())
+                        .title(notification.getTitle())
+                        .message(notification.getMessage())
+                        .isRead(notification.getIsRead())
+                        .createdAt(notification.getCreatedAt())
+                        .type(notification.getType())
+                        .actionUrl(notification.getActionUrl())
+                        .build())
+                .toList();
+    }
+
+    @Override
+    public void markOrganizationNotificationAsRead(
+            Long notificationId,
+            String organizationEmail) {
+
+        Organization organization =
+                organizationRepository.findByEmail(organizationEmail)
+                        .orElseThrow(() ->
+                                new RuntimeException("Organization not found"));
+
+        Notification notification =
+                notificationRepository.findById(notificationId)
+                        .orElseThrow(() ->
+                                new RuntimeException("Notification not found"));
+
+        if (notification.getOrganization() == null ||
+                !notification.getOrganization()
+                        .getId()
+                        .equals(organization.getId())) {
+
+            throw new RuntimeException(
+                    "Unauthorized notification access"
+            );
+        }
 
         notification.setIsRead(true);
 

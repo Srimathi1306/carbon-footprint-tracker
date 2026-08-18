@@ -2,12 +2,10 @@ package com.carbonfootprint.footprint_backend.service.impl;
 
 import com.carbonfootprint.footprint_backend.dto.ActivityRequest;
 import com.carbonfootprint.footprint_backend.dto.ActivityResponse;
-import com.carbonfootprint.footprint_backend.entity.Activity;
-import com.carbonfootprint.footprint_backend.entity.NotificationType;
-import com.carbonfootprint.footprint_backend.entity.User;
-import com.carbonfootprint.footprint_backend.entity.EmissionFactor;
+import com.carbonfootprint.footprint_backend.entity.*;
 import com.carbonfootprint.footprint_backend.event.BadgeEvent;
 import com.carbonfootprint.footprint_backend.repository.ActivityRepository;
+import com.carbonfootprint.footprint_backend.repository.OrganizationRepository;
 import com.carbonfootprint.footprint_backend.repository.UserRepository;
 import com.carbonfootprint.footprint_backend.service.*;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +30,8 @@ public class ActivityServiceImpl implements ActivityService {
     private final GoalService goalService;
     private final DailyMissionService dailyMissionService;
     private final WeeklyMissionService weeklyMissionService;
+
+    private final OrganizationRepository organizationRepository;
 
     @Override
     public ActivityResponse addActivity(ActivityRequest request,
@@ -225,6 +225,22 @@ public class ActivityServiceImpl implements ActivityService {
         activityRepository.delete(activity);
 
         goalService.evaluateGoal(user);
+    }
+
+    @Override
+    public List<ActivityResponse> getOrganizationActivities(
+            String organizationEmail) {
+
+        Organization organization =
+                organizationRepository.findByEmail(organizationEmail)
+                        .orElseThrow(() ->
+                                new RuntimeException("Organization not found"));
+
+        return activityRepository
+                .findAllByOrganizationId(organization.getId())
+                .stream()
+                .map(this::mapToResponse)
+                .collect(Collectors.toList());
     }
 
     private ActivityResponse mapToResponse(Activity activity) {

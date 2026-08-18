@@ -167,4 +167,64 @@ WHERE a.user.organization.id = :organizationId
     Double getTotalCarbonEmissionByOrganizationId(
             @Param("organizationId") Long organizationId
     );
+
+    @Query("""
+SELECT a
+FROM Activity a
+JOIN FETCH a.user u
+JOIN FETCH a.emissionFactor ef
+JOIN FETCH ef.category
+WHERE u.organization.id = :organizationId
+ORDER BY a.activityDate DESC, a.createdAt DESC
+""")
+    List<Activity> findAllByOrganizationId(
+            @Param("organizationId") Long organizationId
+    );
+
+    @Query("""
+SELECT
+    c.name,
+    COALESCE(SUM(a.carbonEmission), 0)
+FROM Activity a
+JOIN a.user u
+JOIN a.emissionFactor ef
+JOIN ef.category c
+WHERE u.organization.id = :organizationId
+GROUP BY c.name
+ORDER BY SUM(a.carbonEmission) DESC
+""")
+    List<Object[]> getOrganizationEmissionByCategory(
+            @Param("organizationId") Long organizationId
+    );
+
+    @Query("""
+SELECT
+    YEAR(a.activityDate),
+    MONTH(a.activityDate),
+    COALESCE(SUM(a.carbonEmission), 0)
+FROM Activity a
+JOIN a.user u
+WHERE u.organization.id = :organizationId
+GROUP BY YEAR(a.activityDate), MONTH(a.activityDate)
+ORDER BY YEAR(a.activityDate), MONTH(a.activityDate)
+""")
+    List<Object[]> getOrganizationMonthlyEmission(
+            @Param("organizationId") Long organizationId
+    );
+
+    @Query("""
+SELECT
+    u.name,
+    COALESCE(SUM(a.carbonEmission), 0)
+FROM Activity a
+JOIN a.user u
+WHERE u.organization.id = :organizationId
+GROUP BY u.id, u.name
+ORDER BY SUM(a.carbonEmission) DESC
+""")
+    List<Object[]> getOrganizationEmissionByUser(
+            @Param("organizationId") Long organizationId
+    );
+
+
 }

@@ -20,6 +20,15 @@ public class OrganizationDashboardController {
     private final OrganizationDashboardService service;
     private final OrganizationService organizationService;
 
+    @GetMapping("/dashboard")
+    public ResponseEntity<OrganizationDashboardResponse> getDashboard(
+            Authentication authentication) {
+
+        return ResponseEntity.ok(
+                service.getDashboard(authentication.getName())
+        );
+    }
+
     // Get all users belonging to the logged-in organization
     @GetMapping("/users")
     public ResponseEntity<List<UserResponse>> getUsers(

@@ -19,4 +19,8 @@ public interface ActivityService {
 
     void deleteActivity(Long id, String email);
     List<ActivityResponse> getAllActivities();
+
+    List<ActivityResponse> getOrganizationActivities(
+            String organizationEmail
+    );
 }

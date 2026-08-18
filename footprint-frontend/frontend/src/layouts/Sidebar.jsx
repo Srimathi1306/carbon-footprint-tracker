@@ -15,6 +15,7 @@ import {
   FaTrophy,
   FaTasks,
   FaHeadset,
+  FaBuilding,
 } from "react-icons/fa";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
@@ -73,11 +74,6 @@ function Sidebar({ role }) {
               <FaLightbulb />
               <span>Recommendations</span>
             </NavLink>
-
-            {/* <NavLink to="/benchmark" className="nav-item">
-              <FaChartLine />
-              <span>Benchmark</span>
-            </NavLink> */}
 
             <NavLink to="/daily-missions" className="nav-item">
               <FaTasks />
@@ -150,7 +146,7 @@ function Sidebar({ role }) {
           <>
             <NavLink to="/organization/dashboard" className="nav-item">
               <FaBuilding />
-              <span>Organization Dashboard</span>
+              <span>Dashboard</span>
             </NavLink>
 
             <NavLink to="/organization/users" className="nav-item">
@@ -163,10 +159,15 @@ function Sidebar({ role }) {
               <span>Activities</span>
             </NavLink>
 
-            <NavLink to="/organization/support" className="nav-item">
+            <NavLink to="/organization/analytics" className="nav-item">
+              <FaChartPie />
+              <span>Analytics</span>
+            </NavLink>
+
+            {/* <NavLink to="/organization/support" className="nav-item">
               <FaHeadset />
               <span>Support</span>
-            </NavLink>
+            </NavLink> */}
 
             <NavLink to="/organization/profile" className="nav-item">
               <FaUser />

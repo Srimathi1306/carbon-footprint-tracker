@@ -17,4 +17,14 @@ public interface NotificationService {
     List<NotificationResponse> getMyNotifications(String email);
 
     void markAsRead(Long notificationId);
+
+    List<NotificationResponse> getOrganizationNotifications(
+            String organizationEmail
+    );
+
+    void markOrganizationNotificationAsRead(
+            Long notificationId,
+            String organizationEmail
+    );
+
 }
